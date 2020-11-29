@@ -3,18 +3,16 @@ import imutils
 import cv2
 import argparse
 import os.path
-import pytesseract
-import re
 
 from skimage.filters import threshold_local
 
 
 # Objektum sarkainak megkeresése
-def find_edges(image):
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)  # Szürkévé tétel
+def find_edges(img):
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # Szürkévé tétel
     gray = cv2.GaussianBlur(gray, (5, 5), -6)  # Elmosodás
-    edged = cv2.Canny(gray, 75, 200)  # Szélek meghatározása
-    return edged
+    ed = cv2.Canny(gray, 75, 200)  # Szélek meghatározása
+    return ed
 
 
 def show_result(title, *imgs):
@@ -48,114 +46,114 @@ def order_points(pts):
     return rect
 
 
-def four_point_transform(image, pts):
+def four_point_transform(img, pts):
     # Koordináta rendezés, változókba bontás (top-left, top-right, bottom-right, bottom-left)
     rect = order_points(pts)
     (tl, tr, br, bl) = rect
 
     # Kép szélességének meghatározása, legnagyobbat válasszuk
-    widthA = np.sqrt(((br[0] - bl[0]) ** 2) + ((br[1] - bl[1]) ** 2))
-    widthB = np.sqrt(((tr[0] - tl[0]) ** 2) + ((tr[1] - tl[1]) ** 2))
-    maxWidth = max(int(widthA), int(widthB))
+    width_a = np.sqrt(((br[0] - bl[0]) ** 2) + ((br[1] - bl[1]) ** 2))
+    width_b = np.sqrt(((tr[0] - tl[0]) ** 2) + ((tr[1] - tl[1]) ** 2))
+    max_width = max(int(width_a), int(width_b))
 
     # Kiszámoljuk magasságát, legnagyobbat válasszuk
-    heightA = np.sqrt(((tr[0] - br[0]) ** 2) + ((tr[1] - br[1]) ** 2))
-    heightB = np.sqrt(((tl[0] - bl[0]) ** 2) + ((tl[1] - bl[1]) ** 2))
-    maxHeight = max(int(heightA), int(heightB))
+    height_a = np.sqrt(((tr[0] - br[0]) ** 2) + ((tr[1] - br[1]) ** 2))
+    height_b = np.sqrt(((tl[0] - bl[0]) ** 2) + ((tl[1] - bl[1]) ** 2))
+    max_height = max(int(height_a), int(height_b))
 
     # Kép átalakítása a kiszámolt értékre
     dst = np.array([
         [0, 0],
-        [maxWidth - 1, 0],
-        [maxWidth - 1, maxHeight - 1],
-        [0, maxHeight - 1]], dtype="float32")
+        [max_width - 1, 0],
+        [max_width - 1, max_height - 1],
+        [0, max_height - 1]], dtype="float32")
 
-    M = cv2.getPerspectiveTransform(rect, dst)
-    warped = cv2.warpPerspective(image, M, (maxWidth, maxHeight))
+    m = cv2.getPerspectiveTransform(rect, dst)
+    warp = cv2.warpPerspective(img, m, (max_width, max_height))
 
-    return warped
+    return warp
 
 
-def blur_filter(image):
-    image = cv2.blur(image, (5, 5))
+def blur_filter(img):
+    img = cv2.blur(img, (5, 5))
     if args["debug"]:
-        show_result("Blurred", imutils.resize(image, height=650))
-    return image
+        show_result("Blurred", imutils.resize(img, height=650))
+    return img
 
 
-def gaussian_blur_filter(image):
-    image = cv2.GaussianBlur(warped, (5, 5), 0)
+def gaussian_blur_filter(img):
+    img = cv2.GaussianBlur(img, (5, 5), 0)
     if args["debug"]:
-        show_result("Gaussian blur", imutils.resize(image, height=650))
-    return image
+        show_result("Gaussian blur", imutils.resize(img, height=650))
+    return img
 
 
-def median_blur_filter(image):
-    image = cv2.medianBlur(image, 5)
+def median_blur_filter(img):
+    img = cv2.medianBlur(img, 5)
     if args["debug"]:
-        show_result("Media blur", imutils.resize(image, height=650))
-    return image
+        show_result("Media blur", imutils.resize(img, height=650))
+    return img
 
 
-def bilateral_filter(image):
-    image = cv2.bilateralFilter(image, 9, 75, 75)
+def bilateral_filter(img):
+    img = cv2.bilateralFilter(img, 9, 75, 75)
     if args["debug"]:
-        show_result("Media blur", imutils.resize(image, height=650))
-    return image
+        show_result("Media blur", imutils.resize(img, height=650))
+    return img
 
 
-def sharpen(image):
+def sharpen(img):
     kernel = np.array([[-1, -1, -1], [-1, 9, -1], [-1, -1, -1]])
-    image = cv2.filter2D(image, -1, kernel)
+    img = cv2.filter2D(img, -1, kernel)
     if args["debug"]:
-        show_result("Sharpen ", imutils.resize(image, height=650))
-    return image
+        show_result("Sharpen ", imutils.resize(img, height=650))
+    return img
 
 
-def sepia(image):
+def sepia(img):
     kernel = np.array([[0.272, 0.534, 0.131],
                        [0.349, 0.686, 0.168],
                        [0.393, 0.769, 0.189]])
-    image = cv2.filter2D(image, -1, kernel)
+    img = cv2.filter2D(img, -1, kernel)
     if args["debug"]:
-        show_result("Sepia ", imutils.resize(image, height=650))
-    return image
+        show_result("Sepia ", imutils.resize(img, height=650))
+    return img
 
 
-def emboss(image):
+def emboss(img):
     kernel = np.array([[0, -1, -1],
                        [1, 0, -1],
                        [1, 1, 0]])
-    image = cv2.filter2D(image, -1, kernel)
+    img = cv2.filter2D(img, -1, kernel)
     if args["debug"]:
-        show_result("Emboss ", imutils.resize(image, height=650))
-    return image
+        show_result("Emboss ", imutils.resize(img, height=650))
+    return img
 
 
-def brightnessControl(image, level):
-    image = cv2.convertScaleAbs(image, beta=level)
+def brightnesscontrol(img, level):
+    img = cv2.convertScaleAbs(img, beta=level)
     if args["debug"]:
-        show_result("Brightness control ", imutils.resize(image, height=650))
-    return image
+        show_result("Brightness control ", imutils.resize(img, height=650))
+    return img
 
 
-def invert_filter(image):
-    image = (255 - image)
+def invert_filter(img):
+    img = (255 - img)
     if args["debug"]:
-        show_result("Invert ", imutils.resize(image, height=650))
-    return image
+        show_result("Invert ", imutils.resize(img, height=650))
+    return img
 
 
-def black_and_white_filter(image):
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    T = threshold_local(image, 11, offset=10, method="gaussian")
-    image = (image > T).astype("uint8") * 255
+def black_and_white_filter(img):
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    t = threshold_local(img, 11, offset=10, method="gaussian")
+    img = (img > t).astype("uint8") * 255
     if args["debug"]:
-        show_result("Black and white ", imutils.resize(image, height=650))
-    return image
+        show_result("Black and white ", imutils.resize(img, height=650))
+    return img
 
 
-### Argumentumok bekérése
+# Argumentumok bekérése
 ap = argparse.ArgumentParser()
 
 # Kép elérési út bekérése
@@ -168,9 +166,9 @@ ap.add_argument("-me", "--median_blur_filter", action='store_true', required=Fal
 ap.add_argument("-bi", "--bilateral_filter", action='store_true', required=False, help="Bilateral filter")
 ap.add_argument("-sh", "--sharpen", action='store_true', required=False, help="Sharpen filter")
 ap.add_argument("-em", "--emboss", action='store_true', required=False, help="Emboss filter")
-ap.add_argument("-bc", "--brightnessControl", required=False, help="Brightness Control")
+ap.add_argument("-bc", "--brightnesscontrol", required=False, help="Brightness Control")
 ap.add_argument("-in", "--invert_filter", action='store_true', required=False, help="Invert filter")
-ap.add_argument("-bw", "--black_and_white_filter", action='store_true', required=False, help="Black and White filter filter")
+ap.add_argument("-bw", "--black_and_white_filter", action='store_true', required=False, help="B&W filter")
 
 
 # Tömbe helyezése
@@ -193,9 +191,6 @@ if os.path.isfile(args['image']):
     # Kép méretezés
     image = imutils.resize(image, height=500)
     #
-    ###Kép feljavítások
-
-    ###
     # Objektum sarkainak
     edged = find_edges(image)
 
@@ -206,6 +201,7 @@ if os.path.isfile(args['image']):
     cnts = cv2.findContours(edged.copy(), cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
     cnts = imutils.grab_contours(cnts)
     cnts = sorted(cnts, key=cv2.contourArea, reverse=True)[:5]
+    screenCnt = 0
 
     for c in cnts:
         # approximate the contour
@@ -227,17 +223,17 @@ if os.path.isfile(args['image']):
     if args["debug"]:
         show_result("Wrapped - Original", imutils.resize(warped, height=650))
 
-#Filterezés
+    # Filterezés
     for key in args:
-        if args[key] == True:
+        if args[key]:
             warped = eval(key+"(warped)")
-        if key == "brightnessControl" and args[key]!=None:
+        if key == "brightnesscontrol" and args[key] is not None:
             print(args[key])
-            warped = brightnessControl(warped, int(args[key]))
+            warped = brightnesscontrol(warped, int(args[key]))
 
     if args["debug"]:
         show_result("Wrapped", imutils.resize(warped, height=650))
 
-#Kép mentés
-    if args["output"] != None:
+    # Kép mentés
+    if args["output"] is not None:
         cv2.imwrite(args["output"], warped)
