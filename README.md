@@ -51,7 +51,7 @@ A script csak olyan képeket tud scannelni amik jól elkülöníthető kontúrok
 `Ubuntu 20.04` - Terminálban és PyCharm programban tesztelve és 
 `Windows 10` - PyCharm programban tesztelve.
 
-##Tesztgép hardware:
+## Tesztgép hardware:
 - Processzor: `AMD Ryzen 5 3600 @ 3.6Ghz`
 - RAM: `Kingston HyperX Predator DDR4-3200 16GB Kit2`
 
@@ -135,3 +135,6 @@ A következő képek a program lépés folyamatait mutatja be az eredeti képtő
 - https://towardsdatascience.com/python-opencv-building-instagram-like-image-filters-5c482c1c5079
 - https://stackoverflow.com/questions/56812505/image-restoration-to-enhance-details-with-opencv
 - https://docs.opencv.org/master/d4/d86/group__imgproc__filter.html
+
+## Szerző
+Stefka Márton @ 2020-2021

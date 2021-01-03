@@ -168,7 +168,6 @@ ap.add_argument("-bw", "--black_and_white_filter", action='store_true', required
 
 # Tömbe helyezése
 args = vars(ap.parse_args())
-print(args['image'])
 
 # Image fájl beolvasása
 
@@ -225,12 +224,12 @@ if os.path.isfile(args['image']):
 
     # Filterezés
     for key in args:
-        print(key+"(warped)")
+        # print(key+"(warped)")
         if key!="image" and key!="output" and key!="debug" and key!="brightnesscontrol":
             if args[key]:
                 warped = eval(key+"(warped)")
         if key == "brightnesscontrol" and args[key] is not None:
-            print(args[key])
+            # print(args[key])
             warped = brightnesscontrol(warped, int(args[key]))
 
     if args["debug"]:
