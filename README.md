@@ -44,7 +44,7 @@ A script csak olyan képeket tud scannelni amik jól elkülöníthető kontúrok
 `-sh` - Sharpen Filter  
 `-em` - Emboss Filter  
 `-bc <+/-number>` - Brightness Control [-255,255]  
-`-in` - Invert Filter
+`-in` - Invert Filter  
 `-bw` - Black and White Filter
 
 ## Tesztelt operációs rendszerek:  
@@ -55,52 +55,56 @@ A script csak olyan képeket tud scannelni amik jól elkülöníthető kontúrok
 - Processzor: `AMD Ryzen 5 3600 @ 3.6Ghz`
 - RAM: `Kingston HyperX Predator DDR4-3200 16GB Kit2`
 
-## Tesztek
+## Tesztek - Objektum felismerés
 A következő képek a program lépés folyamatait mutatja be az eredeti képtől kezdve a vágottig
 #### Teszt No. 1
 ![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res1.png?raw=true)
 #### Teszt No. 2
-![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res2.png?raw=true)
+![Teszt_2](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res2.png?raw=true)
 #### Teszt No. 3
-![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res3.png?raw=true)
+![Teszt_3](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res3.png?raw=true)
 #### Teszt No. 4
-![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res4.png?raw=true)
+![Teszt_4](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res4.png?raw=true)
 #### Teszt No. 5
-![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res5.png?raw=true)
+![Teszt_5](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res5.png?raw=true)
 #### Teszt No. 6
-![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res6.png?raw=true)
+![Teszt_6](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res6.png?raw=true)
 #### Teszt No. 7
-![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res7.png?raw=true)
+![Teszt_7](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res7.png?raw=true)
 #### Teszt No. 8
-![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res8.png?raw=true)
+![Teszt_8](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res8.png?raw=true)
 #### Teszt No. 9
-![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res9.png?raw=true)
+![Teszt_9](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res9.png?raw=true)
 #### Teszt No. 10
-![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res10.png?raw=true)
+![Teszt_10](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res10.png?raw=true)
 #### Teszt No. 11
-![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res11.png?raw=true)
+![Teszt_11](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res11.png?raw=true)
 #### Teszt No. 12
-![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res12.png?raw=true)
+![Teszt_12](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res12.png?raw=true)
 #### Teszt No. 13
-![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res13.png?raw=true)
+![Teszt_13](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res13.png?raw=true)
 #### Teszt No. 14
-![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res14.png?raw=true)
+![Teszt_14](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res14.png?raw=true)
 #### Teszt No. 15
-![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res15.png?raw=true)
+![Teszt_15](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res15.png?raw=true)
 #### Teszt No. 16
-![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res16.png?raw=true)
+![Teszt_16](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res16.png?raw=true)
 #### Teszt No. 17
-![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res17.png?raw=true)
+![Teszt_17](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res17.png?raw=true)
 #### Teszt No. 18
-![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res18.png?raw=true)
+![Teszt_18](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res18.png?raw=true)
 #### Teszt No. 19
-![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res19.png?raw=true)
+![Teszt_19](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res19.png?raw=true)
 #### Teszt No. 20
-![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res20.png?raw=true)
+![Teszt_20](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res20.png?raw=true)
 #### Teszt No. 20
-![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res21.png?raw=true)
+![Teszt_21](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res21.png?raw=true)
 #### Teszt No. 22
-![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res22.png?raw=true)
+![Teszt_22](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res22.png?raw=true)
+
+## Felismert objektum filterezés tesztelése
+#### Teszt - Blur Filter (Paraméter: `-br`)
+![Teszt_22](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res-br.png?raw=true)
 
 ## Források
 - https://docs.python.org/3/howto/argparse.html

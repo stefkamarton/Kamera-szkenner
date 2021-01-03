@@ -228,9 +228,9 @@ if os.path.isfile(args['image']):
         if key!="image" and key!="output" and key!="debug" and key!="brightnesscontrol":
             if args[key]:
                 warped = eval(key+"(warped)")
-            if key == "brightnesscontrol" and args[key] is not None:
-                print(args[key])
-                warped = brightnesscontrol(warped, int(args[key]))
+        if key == "brightnesscontrol" and args[key] is not None:
+            print(args[key])
+            warped = brightnesscontrol(warped, int(args[key]))
 
     if args["debug"]:
         show_result("Wrapped", imutils.resize(warped, height=500))
