@@ -17,7 +17,7 @@ def find_edges(img):
 def show_result(title, *imgs):
     for index, i in enumerate(imgs):
         cv2.imshow(title + " No.:" + str(index + 1), i)
-    #cv2.waitKey(0)
+    cv2.waitKey(0)
     return
 
 
@@ -234,7 +234,6 @@ if os.path.isfile(args['image']):
 
     if args["debug"]:
         show_result("Wrapped", imutils.resize(warped, height=500))
-    cv2.waitKey(0)
     # Kép mentés
     if args["output"] is not None:
         cv2.imwrite(args["output"], warped)

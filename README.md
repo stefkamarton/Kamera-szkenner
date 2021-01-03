@@ -56,7 +56,51 @@ A script csak olyan képeket tud scannelni amik jól elkülöníthető kontúrok
 - RAM: `Kingston HyperX Predator DDR4-3200 16GB Kit2`
 
 ## Tesztek
-![Teszt1]("test-images/test1.jpg")
+A következő képek a program lépés folyamatait mutatja be az eredeti képtől kezdve a vágottig
+#### Teszt No. 1
+![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res1.png?raw=true)
+#### Teszt No. 2
+![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res2.png?raw=true)
+#### Teszt No. 3
+![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res3.png?raw=true)
+#### Teszt No. 4
+![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res4.png?raw=true)
+#### Teszt No. 5
+![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res5.png?raw=true)
+#### Teszt No. 6
+![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res6.png?raw=true)
+#### Teszt No. 7
+![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res7.png?raw=true)
+#### Teszt No. 8
+![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res8.png?raw=true)
+#### Teszt No. 9
+![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res9.png?raw=true)
+#### Teszt No. 10
+![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res10.png?raw=true)
+#### Teszt No. 11
+![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res11.png?raw=true)
+#### Teszt No. 12
+![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res12.png?raw=true)
+#### Teszt No. 13
+![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res13.png?raw=true)
+#### Teszt No. 14
+![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res14.png?raw=true)
+#### Teszt No. 15
+![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res15.png?raw=true)
+#### Teszt No. 16
+![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res16.png?raw=true)
+#### Teszt No. 17
+![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res17.png?raw=true)
+#### Teszt No. 18
+![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res18.png?raw=true)
+#### Teszt No. 19
+![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res19.png?raw=true)
+#### Teszt No. 20
+![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res20.png?raw=true)
+#### Teszt No. 20
+![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res21.png?raw=true)
+#### Teszt No. 22
+![Teszt_1](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res22.png?raw=true)
 
 ## Források
 - https://docs.python.org/3/howto/argparse.html
