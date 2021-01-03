@@ -103,8 +103,26 @@ A következő képek a program lépés folyamatait mutatja be az eredeti képtő
 ![Teszt_22](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res22.png?raw=true)
 
 ## Felismert objektum filterezés tesztelése
-#### Teszt - Blur Filter (Paraméter: `-br`)
-![Teszt_22](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res-br.png?raw=true)
+#### Teszt - Blur Filter (Paraméter: `-bl`)
+![Teszt_bl](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res-bl.png?raw=true)
+#### Teszt - Guassian Blur Filter (Paraméter: `-ga`)
+![Teszt_ga](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res-ga.png?raw=true)
+#### Teszt - Median Blur Filter (Paraméter: `-me`)
+![Teszt_me](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res-me.png?raw=true)
+#### Teszt - Bilateral Filter (Paraméter: `-bi`)
+![Teszt_bi](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res-bi.png?raw=true)
+#### Teszt - Sharpen Filter (Paraméter: `-sh`)
+![Teszt_sh](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res-sh.png?raw=true)
+#### Teszt - Emboss Filter (Paraméter: `-em`)
+![Teszt_em](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res-em.png?raw=true)
+#### Teszt - Brightness Control +50 (Paraméter: `-bc 50`)
+![Teszt_bc50](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res-bc50.png?raw=true)
+#### Teszt - Brightness Control -50 (Paraméter: `-bc "-50"`)
+![Teszt_bc-50](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res-bc-50.png?raw=true)
+#### Teszt - Invert Filter (Paraméter: `-in`)
+![Teszt_in](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res-in.png?raw=true)
+#### Teszt - Black and White Filter (Paraméter: `-bw`)
+![Teszt_bw](https://github.com/stefkamarton/Kamera-szkenner/blob/master/test-results/res-bw.png?raw=true)
 
 ## Források
 - https://docs.python.org/3/howto/argparse.html

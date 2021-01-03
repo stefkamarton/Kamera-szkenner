@@ -22,26 +22,22 @@ def show_result(title, *imgs):
 
 
 def order_points(pts):
-    # initialzie a list of coordinates that will be ordered
-    # such that the first entry in the list is the top-left,
-    # the second entry is the top-right, the third is the
-    # bottom-right, and the fourth is the bottom-left
+    #Pontok inicializálása és sorba rendezése
     rect = np.zeros((4, 2), dtype="float32")
 
-    # the top-left point will have the smallest sum, whereas
-    # the bottom-right point will have the largest sum
+    # Bal-felső lesz a legkisebb értékű
+    # Jobb alsó lesz a legnagyobb értékű
     s = pts.sum(axis=1)
     rect[0] = pts[np.argmin(s)]
     rect[2] = pts[np.argmax(s)]
 
-    # now, compute the difference between the points, the
-    # top-right point will have the smallest difference,
-    # whereas the bottom-left will have the largest difference
+    # Jobb felső lesz a legkisebb különbségű
+    # Bal alsó lesz a legnagyobb különbségű
     diff = np.diff(pts, axis=1)
     rect[1] = pts[np.argmin(diff)]
     rect[3] = pts[np.argmax(diff)]
 
-    # return the ordered coordinates
+    # Visszatérés a rendezett koordinátákkal
     return rect
 
 
@@ -97,7 +93,7 @@ def median_blur_filter(img):
 def bilateral_filter(img):
     img = cv2.bilateralFilter(img, 9, 75, 75)
     if args["debug"]:
-        show_result("Media blur", imutils.resize(img, height=500))
+        show_result("Bilateral blur", imutils.resize(img, height=500))
     return img
 
 
@@ -203,7 +199,7 @@ if os.path.isfile(args['image']):
     screenCnt = 0
 
     for c in cnts:
-        # approximate the contour
+        # Kontúrok megközelítése
         peri = cv2.arcLength(c, True)
         approx = cv2.approxPolyDP(c, 0.02 * peri, True)
 
@@ -213,7 +209,12 @@ if os.path.isfile(args['image']):
             break
 
     # Kontúrok mutatása
-    cv2.drawContours(image, [screenCnt], -1, (255, 0, 0), 2)
+    try:
+        cv2.drawContours(image, [screenCnt], -1, (255, 0, 0), 2)
+    except NameError:
+        print("A bemeneti képen nem lehet kontúrt elkülöníteni")
+        exit()
+
     if args["debug"]:
         show_result("Outline", image)
 
